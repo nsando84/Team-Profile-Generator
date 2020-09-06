@@ -14,8 +14,10 @@ const inquirer = require("inquirer");
 
 class Mainloop {
     constructor() {
-        
     }
+
+////////////////// RUN EXIT PROGRAM ////////////////////    
+
     init() {
         inquirer
             .prompt([
@@ -86,13 +88,16 @@ class Mainloop {
             .then(employeeChoice => {
                 switch (employeeChoice.employeeChoice) { 
                     case "Manager":
-                        console.log("manager")
+                        this.runNewManager()
+                        // console.log("manager")
                         break;
                     case "Engineer":
-                        console.log("Engineer")
+                        this.runNewEngineer()
+                        // console.log("Engineer")
                         break;
                     case "Intern":
-                        console.log("Intern")
+                        this.runNewIntern()
+                        // console.log("Intern")
                         break;
                     default:
                         this.init()
@@ -102,7 +107,197 @@ class Mainloop {
                 console.error(err);
             });
     }  
-}
+    
+////////////////// CREATE NEW MANAGER ////////////////////
+
+    runNewManager() {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "managerId",
+                    message: "Employee's ID"
+                    
+                },
+                {
+                    type: "input",
+                    name: "managerName",
+                    message: "Employee's name"
+                    
+                },
+                {
+                    type: "input",
+                    name: "managerEmail",
+                    message: "Employee's email"
+                    
+                },
+                {
+                    type: "input",
+                    name: "managerOfficeNumber",
+                    message: "Office Number"
+                    
+                }
+            ])
+            .then(ManagerChoice => {
+                inquirer
+                    .prompt([
+                        {
+                        type: "list",
+                        name: "managerFinalChoice",
+                        message: `Want to finishing adding Manager - ${ManagerChoice.managerName}`,
+                        choices: [
+                        "Yes",
+                        "<<<- Go back"
+                        ]
+                        }    
+                    ])
+                    .then(managerFinalChoice => {
+                        if (managerFinalChoice.managerFinalChoice === "Yes") { 
+                            console.log(ManagerChoice)
+                            this.init()
+                        } else { 
+                            this.runNewEmployee()
+                        }     
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                    });
+                    
+            })     
+            .catch(function(err) {
+                console.error(err);
+            });
+        }
+
+////////////////// CREATE NEW Engineer ////////////////////
+    
+    runNewEngineer() {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "engineerId",
+                    message: "Employee's ID"
+                    
+                },
+                {
+                    type: "input",
+                    name: "engineerName",
+                    message: "Employee's name"
+                    
+                },
+                {
+                    type: "input",
+                    name: "engineerEmail",
+                    message: "Employee's email"
+                    
+                },
+                {
+                    type: "input",
+                    name: "engineerGithub",
+                    message: "Github username"
+                    
+                }
+            ])
+            .then(engineerChoice => {
+                inquirer
+                    .prompt([
+                        {
+                        type: "list",
+                        name: "engineerFinalChoice",
+                        message: `Want to finishing adding engineer - ${engineerChoice.engineerName}`,
+                        choices: [
+                        "Yes",
+                        "<<<- Go back"
+                        ]
+                        }    
+                    ])
+                    .then(engineerFinalChoice => {
+                        if (engineerFinalChoice.engineerFinalChoice === "Yes") { 
+                            console.log(engineerChoice)
+                            this.init()
+                        } else { 
+                            this.runNewEmployee()
+                        }     
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                    });
+                    
+            })     
+            .catch(function(err) {
+                console.error(err);
+            });
+        }
+
+////////////////// CREATE NEW Intern ////////////////////
+
+    
+    runNewIntern() {
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "internId",
+                    message: "Employee's ID"
+                    
+                },
+                {
+                    type: "input",
+                    name: "internName",
+                    message: "Employee's name"
+                    
+                },
+                {
+                    type: "input",
+                    name: "internEmail",
+                    message: "Employee's email"
+                    
+                },
+                {
+                    type: "input",
+                    name: "internSchool",
+                    message: "Current university"
+                    
+                }
+            ])
+            .then(internChoice => {
+                inquirer
+                    .prompt([
+                        {
+                        type: "list",
+                        name: "internFinalChoice",
+                        message: `Want to finishing adding intern - ${internChoice.internName}`,
+                        choices: [
+                        "Yes",
+                        "<<<- Go back"
+                        ]
+                        }    
+                    ])
+                    .then(internFinalChoice => {
+                        if (internFinalChoice.internFinalChoice === "Yes") { 
+                            console.log(internChoice)
+                            this.init()
+                        } else { 
+                            this.runNewEmployee()
+                        }     
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                    });
+                    
+            })     
+            .catch(function(err) {
+                console.error(err);
+            });
+        }
+
+    }
+
+
+
+
+
 
 
 const newInit = new Mainloop;
