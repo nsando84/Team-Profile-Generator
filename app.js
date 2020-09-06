@@ -1,7 +1,7 @@
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
+const Manager = require("./lib/Manager");
 // const path = require("path");
 // const fs = require("fs");
 
@@ -138,13 +138,13 @@ class Mainloop {
                     
                 }
             ])
-            .then(ManagerChoice => {
+            .then(managerChoice => {
                 inquirer
                     .prompt([
                         {
                         type: "list",
                         name: "managerFinalChoice",
-                        message: `Want to finishing adding Manager - ${ManagerChoice.managerName}`,
+                        message: `Want to finishing adding Manager - ${managerChoice.managerName}`,
                         choices: [
                         "Yes",
                         "<<<- Go back"
@@ -153,7 +153,9 @@ class Mainloop {
                     ])
                     .then(managerFinalChoice => {
                         if (managerFinalChoice.managerFinalChoice === "Yes") { 
-                            console.log(ManagerChoice)
+                            // console.log(managerChoice)
+                            const newManager = new Manager(managerChoice.managerId, managerChoice.managerName, managerChoice.managerEmail, managerChoice.managerOfficeNumber)
+                            console.log(newManager)
                             this.init()
                         } else { 
                             this.runNewEmployee()
@@ -214,7 +216,9 @@ class Mainloop {
                     ])
                     .then(engineerFinalChoice => {
                         if (engineerFinalChoice.engineerFinalChoice === "Yes") { 
-                            console.log(engineerChoice)
+                            // console.log(engineerChoice)
+                            const newEngineer = new Engineer(engineerChoice.engineerId, engineerChoice.engineerName, engineerChoice.engineerEmail, engineerChoice.engineerGithub)
+                            console.log(newEngineer)
                             this.init()
                         } else { 
                             this.runNewEmployee()
@@ -276,7 +280,9 @@ class Mainloop {
                     ])
                     .then(internFinalChoice => {
                         if (internFinalChoice.internFinalChoice === "Yes") { 
-                            console.log(internChoice)
+                            // console.log(internChoice)
+                            const newIntern = new Intern(internChoice.internId, internChoice.internName, internChoice.internEmail, internChoice.internSchool)
+                            console.log(newIntern)
                             this.init()
                         } else { 
                             this.runNewEmployee()
@@ -298,7 +304,7 @@ class Mainloop {
 
 
 
-
+////////////////// Starter FUNCTION ////////////////////
 
 const newInit = new Mainloop;
 newInit.init()
