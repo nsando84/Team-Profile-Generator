@@ -17,10 +17,7 @@ const { inherits } = require("util");
 
 const EmployeeArr = []
 
-    addEmployee = (newManager) => {
-        
-        EmployeeArr.push(newManager)
-    }
+    
 // ////////////////// RUN START PROGRAM ////////////////////    
 
     init = () => {
@@ -78,7 +75,7 @@ const EmployeeArr = []
             .then(byeChoice => {
                 switch (byeChoice.byeChoice) {
                     case "Yes":
-                        console.log("GoodBye")
+                        console.log("Good bye")
                         process.exit(0) 
                     default:
                         init() 
@@ -90,6 +87,10 @@ const EmployeeArr = []
     }  
     
 //////////////////// CREATE NEW EMPLOYEE ////////////////////
+
+    addEmployee = (newManager) => {
+        EmployeeArr.push(newManager)
+    }
 
     runNewEmployee = () => {
         inquirer
@@ -174,7 +175,7 @@ const EmployeeArr = []
                 choices: [
                     "Check employees",
                     "Delete employee",
-                    "Complete",
+                    "Complete procress",
                     "<<<- Go back"
                     ]
                 }
@@ -188,8 +189,8 @@ const EmployeeArr = []
                         checkEmployeeChoices(),
                         init()
                         break;
-                    case "Complete":
-                        render(EmployeeArr)
+                    case "Complete procress":
+                        runEmployeeComplete()
                         break;
                     default:    
                         deleteEmployee()
@@ -200,6 +201,23 @@ const EmployeeArr = []
             }); 
     }
 
+//////////////// Complete Process FUNCTION ////////////////////
+
+    runEmployeeComplete = () => {
+        let htmlFile = render(EmployeeArr)
+        // outputPath
+        fs.writeFile(outputPath, htmlFile, function(err) {
+
+            if (err) {
+              return console.log(err);
+            }
+          
+            console.log("Success!");
+          
+          });
+        // console.log(render(EmployeeArr)) 
+    }
+    
 
 //////////////// Starter FUNCTION ////////////////////
 
