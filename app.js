@@ -128,11 +128,32 @@ const EmployeeArr = []
 //////////////////// Check EMPLOYEES ////////////////////
 
     checkEmployeeChoices = () => {
-        
-        return EmployeeArr.length === 0 ? "No employees" : console.log(EmployeeArr)
-        
+        EmployeeArr.length === 0 ? console.log("\x1b[31m","No employees") : console.log(EmployeeArr)
     }
    
+    
+
+    deleteEmployee = () => {
+        inquirer
+            .prompt([
+                {
+                    type: "list",
+                    message: "Pick employee to delete",
+                    name: "deleteEmployee",
+                    choices: EmployeeArr
+                }
+            ]).then(deleteEmployee => {
+                console.log(deleteEmployee.deleteEmployee)
+                if (deleteEmployee.deleteEmployee === "<<<- Go back") {
+                    runCheckEmployee()
+                } else {
+                    
+                    // let choice = deleteEmployee.deleteEmployee
+                    // delete this
+                    init()
+                }
+            })
+    }
 
     runCheckEmployee = () => {
         inquirer
@@ -150,15 +171,15 @@ const EmployeeArr = []
                 }
             ])
             .then(currentEmployee => {
-                console.log(currentEmployee.currentEmployee)
                 if (currentEmployee.currentEmployee === "<<<- Go back") {
                     runNewEmployee()
                 } else if (currentEmployee.currentEmployee === "Check employees") {
                     checkEmployeeChoices()
                     init()
                 } else if (currentEmployee.currentEmployee === "Complete") {
+                    render(EmployeeArr)
                 } else {
-                    init()
+                    deleteEmployee()
                 }
             })
             .catch(function(err) {
