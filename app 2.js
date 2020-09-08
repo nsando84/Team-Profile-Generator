@@ -153,11 +153,14 @@ const EmployeeArr = []
                         break;
                     default:
                         let deleteChoice = deleteEmployee.deleteEmployee
-                        EmployeeArr.forEach(function(e, i) {
+                        
+                        EmployeeArr.forEach(function(e) {
                             if (e.name === deleteChoice) {
-                                EmployeeArr.splice(i, 1)
+                                console.log(Object.)
                             }
                         })
+                    
+                    
                     init()
                 }
             })
