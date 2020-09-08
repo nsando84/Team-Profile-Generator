@@ -76,11 +76,12 @@ const EmployeeArr = []
                 }
             ])
             .then(byeChoice => {
-                if (byeChoice.byeChoice === "Yes") { 
-                    console.log("GoodBye")
-                    process.exit(0) 
-                } else { 
-                    init() 
+                switch (byeChoice.byeChoice) {
+                    case "Yes":
+                        console.log("GoodBye")
+                        process.exit(0) 
+                    default:
+                        init() 
                 }     
             })
             .catch(function(err) {
@@ -140,14 +141,18 @@ const EmployeeArr = []
                     type: "list",
                     message: "Pick employee to delete",
                     name: "deleteEmployee",
-                    choices: EmployeeArr
+                    choices: [
+                        ...EmployeeArr,
+                        "<<<- Go back"
+                    ]
                 }
             ]).then(deleteEmployee => {
-                console.log(deleteEmployee.deleteEmployee)
-                if (deleteEmployee.deleteEmployee === "<<<- Go back") {
-                    runCheckEmployee()
-                } else {
-                    
+                switch (deleteEmployee.deleteEmployee) {
+                    case "<<<- Go back":
+                        runCheckEmployee()
+                        break;
+                    default:
+                    console.log("passed" + deleteEmployee.deleteEmployee)
                     // let choice = deleteEmployee.deleteEmployee
                     // delete this
                     init()
@@ -171,15 +176,19 @@ const EmployeeArr = []
                 }
             ])
             .then(currentEmployee => {
-                if (currentEmployee.currentEmployee === "<<<- Go back") {
-                    runNewEmployee()
-                } else if (currentEmployee.currentEmployee === "Check employees") {
-                    checkEmployeeChoices()
-                    init()
-                } else if (currentEmployee.currentEmployee === "Complete") {
-                    render(EmployeeArr)
-                } else {
-                    deleteEmployee()
+                switch (currentEmployee.currentEmployee) {
+                    case "<<<- Go back":
+                        init()
+                        break;
+                    case "Check employees":
+                        checkEmployeeChoices(),
+                        init()
+                        break;
+                    case "Complete":
+                        render(EmployeeArr)
+                        break;
+                    default:    
+                        deleteEmployee()
                 }
             })
             .catch(function(err) {
