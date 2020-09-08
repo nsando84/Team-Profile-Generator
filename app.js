@@ -14,6 +14,7 @@ const { runCheckEmployee } = require("./promptLib/employeeSetup")
                     choices: [
                         "Create new employee",
                         "Check current employees",
+                        new inquirer.Separator(),
                         "Exit"
                     ]
                 }
@@ -28,7 +29,6 @@ const { runCheckEmployee } = require("./promptLib/employeeSetup")
                         break;
                     case "Check current employees":
                         runCheckEmployee()
-                        // console.log(EmployeeArr)
                         break;
                     default:
                 }   

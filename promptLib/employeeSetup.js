@@ -8,6 +8,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "../output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("../lib/htmlRenderer");
 const { inherits } = require("util");
+const { type } = require("os");
 
 const EmployeeArr = []
 
@@ -26,6 +27,7 @@ const EmployeeArr = []
                         "Manager",
                         "Engineer",
                         "Intern",
+                        new inquirer.Separator(),
                         "<<<- Go back"
                     ]
                 }
@@ -51,10 +53,34 @@ const EmployeeArr = []
     }  
 
     checkEmployeeChoices = () => {
-        EmployeeArr.length === 0 ? console.log("\x1b[31m","No employees") : console.log(EmployeeArr)
+        
+        switch (EmployeeArr.length) {
+            case 0:
+                console.log("\x1b[31m","No employees")
+                break;
+            default: 
+                [...EmployeeArr].forEach(x => {
+                    let keys = Object.keys(x)
+                    switch (keys[3]) {
+                        case "officeNumber": 
+                            console.log("\x1b[33m", `Manager - ${x.name}`)
+                            break;
+                        case "github": 
+                            console.log("\x1b[33m", `Engineer - ${x.name}`)
+                            break;
+                        case "school":
+                            console.log("\x1b[33m", `Intern - ${x.name}`)   
+                            break;
+                        default:
+                    }
+                })
+        }
+        
     }
    
-    
+    checkEmployeeDelete = () => {
+        EmployeeArr.length === 0 ? console.log("\x1b[31m","No employees to delete") & runCheckEmployee() : deleteEmployee()
+    }
 
     deleteEmployee = () => {
         inquirer
@@ -65,6 +91,7 @@ const EmployeeArr = []
                     name: "deleteEmployee",
                     choices: [
                         ...EmployeeArr,
+                        new inquirer.Separator(),
                         "<<<- Go back"
                     ]
                 }
@@ -96,7 +123,8 @@ const EmployeeArr = []
                 choices: [
                     "Check employees",
                     "Delete employee",
-                    "Complete procress",
+                    "Complete process",
+                    new inquirer.Separator(),
                     "<<<- Go back"
                     ]
                 }
@@ -110,11 +138,11 @@ const EmployeeArr = []
                         checkEmployeeChoices(),
                         init()
                         break;
-                    case "Complete procress":
+                    case "Complete process":
                         runEmployeeComplete()
                         break;
                     default:    
-                        deleteEmployee()
+                        checkEmployeeDelete() ///
                 }
             })
             .catch(function(err) {
@@ -133,7 +161,7 @@ const EmployeeArr = []
               return console.log(err);
             }
           
-            console.log("Success!");
+            console.log("\x1b[32m","Success! -- File Created");
           
           });
         // console.log(render(EmployeeArr)) 

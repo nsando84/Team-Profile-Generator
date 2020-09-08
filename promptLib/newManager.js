@@ -40,17 +40,19 @@ runNewManager = () => {
                     message: `Want to finishing adding Manager - ${managerChoice.managerName}`,
                     choices: [
                     "Yes",
+                    new inquirer.Separator(),
                     "<<<- Go back"
                     ]
                     }    
                 ])
                 .then(managerFinalChoice => {
-                    if (managerFinalChoice.managerFinalChoice === "Yes") { 
+                    switch (managerFinalChoice.managerFinalChoice) { 
+                        case "Yes":
                         const newManager = new Manager(managerChoice.managerId, managerChoice.managerName, managerChoice.managerEmail, managerChoice.managerOfficeNumber)
                         addEmployee(newManager)
                         init()
-                        
-                    } else { 
+                        break;
+                        default:
                         runNewEmployee()
                     }     
                 })

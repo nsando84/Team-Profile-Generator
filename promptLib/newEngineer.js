@@ -36,19 +36,22 @@ const Engineer = require("../lib/Engineer");
                         {
                         type: "list",
                         name: "engineerFinalChoice",
-                        message: `Want to finishing adding engineer - ${engineerChoice.engineerName}`,
+                        message: `Want to finishing adding Engineer - ${engineerChoice.engineerName}`,
                         choices: [
                         "Yes",
+                        new inquirer.Separator(),
                         "<<<- Go back"
                         ]
                         }    
                     ])
                     .then(engineerFinalChoice => {
-                        if (engineerFinalChoice.engineerFinalChoice === "Yes") { 
+                        switch (engineerFinalChoice.engineerFinalChoice) { 
+                            case "Yes":
                             const newEngineer = new Engineer(engineerChoice.engineerId, engineerChoice.engineerName, engineerChoice.engineerEmail, engineerChoice.engineerGithub)
                             addEmployee(newEngineer)
                             init()
-                        } else { 
+                            break;
+                            default:
                             runNewEmployee()
                         }     
                     })
