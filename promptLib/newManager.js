@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const Manager = require("../lib/Manager");
+const authenticator = require("./authenticator")
 
 
 
@@ -32,44 +33,50 @@ runNewManager = () => {
             }
         ])
         .then(managerChoice => {
-            inquirer
-                .prompt([
-                    {
-                    type: "list",
-                    name: "managerFinalChoice",
-                    message: `Want to finishing adding Manager - ${managerChoice.managerName}`,
-                    choices: [
-                    "Yes",
-                    new inquirer.Separator(),
-                    "<<<- Go back"
-                    ]
-                    }    
-                ])
-                .then(managerFinalChoice => {
-                    switch (managerFinalChoice.managerFinalChoice) { 
-                        case "Yes":
-                        const newManager = new Manager(managerChoice.managerId, managerChoice.managerName, managerChoice.managerEmail, managerChoice.managerOfficeNumber)
-                        addEmployee(newManager)
-                        init()
-                        break;
-                        default:
-                        runNewEmployee()
-                    }     
-                })
-                .catch(function(err) {
-                    console.error(err);
-                });
-                
-        })     
-        .catch(function(err) {
-            console.error(err);
-        });
-    }
+            if (authenticator(managerChoice) === true) {
+                inquirer
+                    .prompt([
+                        {
+                        type: "list",
+                        name: "managerFinalChoice",
+                        message: `Want to finishing adding Manager - ${managerChoice.managerName}`,
+                        choices: [
+                        "Yes",
+                        new inquirer.Separator(),
+                        "<<<- Go back"
+                        ]
+                        }    
+                    ])
+                    .then(managerFinalChoice => {
+                        switch (managerFinalChoice.managerFinalChoice) { 
+                            case "Yes":
+                            const newManager = new Manager(managerChoice.managerId, managerChoice.managerName, managerChoice.managerEmail, managerChoice.managerOfficeNumber)
+                            addEmployee(newManager)
+                            init()
+                            break;
+                            default:
+                            runNewEmployee()
+                        }     
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                    });
+            } else {
+                runNewEmployee()
+                }   
+            })     
+            .catch(function(err) {
+                console.error(err);
+            });
+            
+        }
 
 
 
 
     
 
-   
-module.exports = {runNewManager: runNewManager}
+
+module.exports = {
+    runNewManager: runNewManager,
+}
