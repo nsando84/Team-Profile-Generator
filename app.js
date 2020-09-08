@@ -155,6 +155,7 @@ const EmployeeArr = []
                         let deleteChoice = deleteEmployee.deleteEmployee
                         EmployeeArr.forEach(function(e, i) {
                             if (e.name === deleteChoice) {
+                                console.log("\x1b[33m", `${e.name} has been deleted`)
                                 EmployeeArr.splice(i, 1)
                             }
                         })
@@ -172,8 +173,8 @@ const EmployeeArr = []
                 name: "currentEmployee",
                 choices: [
                     "Check employees",
-                    "Complete",
                     "Delete employee",
+                    "Complete",
                     "<<<- Go back"
                     ]
                 }
