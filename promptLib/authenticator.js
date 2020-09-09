@@ -14,7 +14,7 @@ function authenticator(checkUserInput) {
             let convertedArrKey = Object.keys(checkUserInput)
             switch (convertedArrKey[3]) {
                 case "managerOfficeNumber":
-                    if (!Number(convertedArr[3]) || convertedArr[3].length === 0) {
+                    if (isNaN(convertedArr[3]) || convertedArr[3].length === 0) {
                         console.log("\x1b[31m","Please enter valid Office number")
                         return false
                     } else {
