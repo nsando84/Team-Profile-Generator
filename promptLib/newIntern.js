@@ -49,6 +49,7 @@ const authenticator = require("./authenticator")
                         .then(internFinalChoice => {
                             switch (internFinalChoice.internFinalChoice) { 
                                 case "Yes":
+                                console.log("\x1b[32m", `Added: Intern - ${internChoice.internName}`)
                                 const newIntern = new Intern(internChoice.internId, internChoice.internName, internChoice.internEmail, internChoice.internSchool)
                                 addEmployee(newIntern)
                                 init()

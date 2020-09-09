@@ -48,6 +48,7 @@ const authenticator = require("./authenticator")
                         .then(engineerFinalChoice => {
                             switch (engineerFinalChoice.engineerFinalChoice) { 
                                 case "Yes":
+                                console.log("\x1b[32m", `Added: Engineer - ${engineerChoice.engineerName}`)
                                 const newEngineer = new Engineer(engineerChoice.engineerId, engineerChoice.engineerName, engineerChoice.engineerEmail, engineerChoice.engineerGithub)
                                 addEmployee(newEngineer)
                                 init()

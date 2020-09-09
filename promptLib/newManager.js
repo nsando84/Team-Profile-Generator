@@ -50,6 +50,7 @@ runNewManager = () => {
                     .then(managerFinalChoice => {
                         switch (managerFinalChoice.managerFinalChoice) { 
                             case "Yes":
+                            console.log("\x1b[32m", `Added: Manager - ${managerChoice.managerName}`)    
                             const newManager = new Manager(managerChoice.managerId, managerChoice.managerName, managerChoice.managerEmail, managerChoice.managerOfficeNumber)
                             addEmployee(newManager)
                             init()

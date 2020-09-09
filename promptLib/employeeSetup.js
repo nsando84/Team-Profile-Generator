@@ -63,13 +63,13 @@ const EmployeeArr = []
                     let keys = Object.keys(x)
                     switch (keys[3]) {
                         case "officeNumber": 
-                            console.log("\x1b[33m", `Manager - ${x.name}`)
+                            console.log("\x1b[35m", `Manager - ${x.name}`)
                             break;
                         case "github": 
-                            console.log("\x1b[33m", `Engineer - ${x.name}`)
+                            console.log("\x1b[35m", `Engineer - ${x.name}`)
                             break;
                         case "school":
-                            console.log("\x1b[33m", `Intern - ${x.name}`)   
+                            console.log("\x1b[35m", `Intern - ${x.name}`)   
                             break;
                         default:
                     }

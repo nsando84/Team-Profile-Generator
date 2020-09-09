@@ -13,7 +13,7 @@ const { runCheckEmployee } = require("./promptLib/employeeSetup")
                     message: "What would you like to do?",
                     choices: [
                         "Create new employee",
-                        "Check current employees",
+                        "Employee options",
                         new inquirer.Separator(),
                         "Exit"
                     ]
@@ -27,7 +27,7 @@ const { runCheckEmployee } = require("./promptLib/employeeSetup")
                     case "Create new employee":
                         runNewEmployee()
                         break;
-                    case "Check current employees":
+                    case "Employee options":
                         runCheckEmployee()
                         break;
                     default:
@@ -56,7 +56,7 @@ const { runCheckEmployee } = require("./promptLib/employeeSetup")
             .then(byeChoice => {
                 switch (byeChoice.byeChoice) {
                     case "Yes":
-                        console.log("Good bye")
+                        console.log("Goodbye")
                         process.exit(0) 
                     default:
                         init() 
