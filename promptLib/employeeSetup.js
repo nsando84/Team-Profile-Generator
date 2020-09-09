@@ -142,7 +142,7 @@ const EmployeeArr = []
                         runEmployeeComplete()
                         break;
                     default:    
-                        checkEmployeeDelete() ///
+                        checkEmployeeDelete() 
                 }
             })
             .catch(function(err) {
@@ -150,21 +150,16 @@ const EmployeeArr = []
             }); 
     }
 
-
-
     runEmployeeComplete = () => {
         let htmlFile = render(EmployeeArr)
-        // outputPath
         fs.writeFile(outputPath, htmlFile, function(err) {
-
             if (err) {
               return console.log(err);
+            } else {
+              console.log("\x1b[32m","Success! -- File Created");
             }
-          
-            console.log("\x1b[32m","Success! -- File Created");
-          
           });
-        // console.log(render(EmployeeArr)) 
+     
     }
 
 module.exports = {

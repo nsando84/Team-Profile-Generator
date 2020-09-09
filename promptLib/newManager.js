@@ -72,12 +72,4 @@ runNewManager = () => {
             
         }
 
-
-
-
-    
-
-
-module.exports = {
-    runNewManager: runNewManager,
-}
+module.exports = { runNewManager: runNewManager }
