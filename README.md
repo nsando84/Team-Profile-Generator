@@ -14,11 +14,11 @@
  #### Video of application ----> [***Click Here***](https://drive.google.com/file/d/1tfrydzmbzunIhys6xIpuzSJBISBlNSeu/view)
  
  > ### Features in the applications:
- > -User can create employees of the following roles: Manager, Engineer, & Intern.
- > -User can check the employees they created through the CLI.
- > -User can delete employees through the CLI.
- > -To reduce errors, User must input correctly.
- > -An HTML document is created upon completion with the employees ID, Name, Email, & more.
+ > - User can create employees of the following roles: Manager, Engineer, & Intern.
+ > - User can check the employees they created through the CLI.
+ > - User can delete employees through the CLI.
+ > - To reduce errors, User must input correctly.
+ > - An HTML document is created upon completion with the employees ID, Name, Email, & more.
 
 
  
