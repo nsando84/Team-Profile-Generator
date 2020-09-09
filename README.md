@@ -7,8 +7,17 @@
 
   
 
-  ### We were tasked with making ....
+  ### We were tasked with making an application for a user to create their team member profile through the CLI. We were to use what we have learned in JEST, Inquirer & Nodejs to complete this task. After the user is finished generating their team memmber profile, the results are saved to an html file for their use. 
 
+  ### Features in the applications:
+  #### ** User can create employees of the following roles: Manager, Engineer, & Intern.
+  #### ** User can check the employees they created through the CLI.
+  #### ** User can delete employees through the CLI.
+  #### ** To reduce errors, User must input correctly.
+  #### ** An HTML document is created upon completion with the employees ID, Name, Email, & more.
+
+
+ 
 ---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -25,25 +34,26 @@
 
 ### **Installation**
 
-    npm install jest
+    npm install Jest
+    npm install Inquirer
 
 ---
 
 ### **Usage**
 
-#### 
+#### This application is used to create a team member profile through the terminal.
 
 ---
 
 ### **Contributing**
 
-#### 
+#### Nick
 
 ---
 
 ### **Tests**
 
-#### 
+#### Tested.
 
 ---
 

@@ -1,7 +1,7 @@
 
 function authenticator(checkUserInput) {
     let convertedArr = Object.values(checkUserInput)
-        if (!Number(convertedArr[0]) || convertedArr[0].length === 0) {
+        if (isNaN(convertedArr[0]) || convertedArr[0].length === 0) {
             console.log("\x1b[31m","Please enter valid ID number")
             return false
         } else if (Number(convertedArr[1]) || convertedArr[1].length === 0 || !/^[a-zA-Z]+$/.test(convertedArr[1])) {
