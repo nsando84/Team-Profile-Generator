@@ -1,7 +1,7 @@
 
-  # **Team Profile Generator**    
+  # **Team Profile Generator**   ![Github All Releases](https://img.shields.io/github/contributors/nsando84/Team-Profile-Generator)   
 
-  ![Github All Releases](https://img.shields.io/github/contributors/nsando84/Team-Profile-Generator)
+ 
 
   ## **Description**
 
