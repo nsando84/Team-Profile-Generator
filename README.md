@@ -1,7 +1,9 @@
 
   # **Team Profile Generator**   ![Github All Releases](https://img.shields.io/github/contributors/nsando84/Team-Profile-Generator)   
 
- 
+ ![ss](https://user-images.githubusercontent.com/67135603/92559390-6034b480-f225-11ea-8f58-c0ab7ac66514.png)
+
+
 
   ## **Description**
 
@@ -43,6 +45,8 @@
 
 #### This application is used to create a team member profile through the terminal.
 
+![ss2](https://user-images.githubusercontent.com/67135603/92559563-adb12180-f225-11ea-8518-dcce9111da44.png)
+
 ---
 
 ### **Contributing**
@@ -59,9 +63,7 @@
 
 ### **Questions?**
 
-
-
-www.github.com/
+www.github.com/nsando84
 
 ---
 
