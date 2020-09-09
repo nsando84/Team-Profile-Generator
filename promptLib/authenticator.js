@@ -29,7 +29,7 @@ function authenticator(checkUserInput) {
                     }
                     break;
                 default:
-                    if (convertedArr[3].length === 0 || !/^[a-zA-Z]+$/.test(convertedArr[3])) {
+                    if (convertedArr[3].length === 0 || !/^[a-zA-Z_ ]+$/.test(convertedArr[3])) {
                         console.log("\x1b[31m","Please enter valid school")
                     } else {
                         return true
